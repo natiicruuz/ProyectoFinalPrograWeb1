@@ -1,0 +1,19 @@
+@startuml
+title Diagrama de Arquitectura - Sistema de Comedores Universitarios
+
+node "Cliente (Frontend)" {
+    component "HTML/CSS/JS" as Frontend
+}
+
+node "Servidor (Backend)" {
+    component "Express (API REST)" as API
+    component "Autenticación (JWT)" as Auth
+    component "Base de Datos (MongoDB)" as DB
+}
+
+Frontend --> API : Peticiones HTTP (CRUD/Autenticación)
+API --> Auth : Verificación de JWT
+API --> DB : Consultas/Actualizaciones de datos
+DB --> API : Respuestas con datos
+API --> Frontend : Respuestas JSON
+@enduml
