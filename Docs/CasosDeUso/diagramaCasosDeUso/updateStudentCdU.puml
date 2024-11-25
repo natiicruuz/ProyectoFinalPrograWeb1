@@ -1,0 +1,15 @@
+@startuml
+title Actualizar Perfil del Estudiante
+
+[*] --> Inicio
+
+Inicio --> AccederPerfil : El estudiante accede a su perfil
+AccederPerfil --> RellenarFormulario : Selecciona editar perfil
+RellenarFormulario --> ValidarDatos : Introduce modificaciones
+ValidarDatos --> Error : Datos inválidos
+Error --> RellenarFormulario : Corrige datos
+
+ValidarDatos --> GuardarCambios : Datos válidos
+GuardarCambios --> ConfirmarEdición : Perfil actualizado exitosamente
+ConfirmarEdición --> [*]
+@enduml

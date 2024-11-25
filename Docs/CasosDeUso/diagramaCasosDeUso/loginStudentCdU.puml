@@ -1,0 +1,13 @@
+@startuml
+title Login a una cuenta de estudiante
+
+[*] --> Inicio
+
+Inicio --> IntroducirCredenciales : El estudiante accede al login
+IntroducirCredenciales --> ValidarCredenciales : Envía datos
+ValidarCredenciales --> Error : Credenciales incorrectas
+Error --> IntroducirCredenciales : Reintentar
+
+ValidarCredenciales --> Acceso : Credenciales válidas
+Acceso --> [*] : Acceso exitoso
+@enduml

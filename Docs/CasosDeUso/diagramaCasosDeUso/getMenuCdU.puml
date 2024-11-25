@@ -1,0 +1,8 @@
+@startuml
+title Consultar el menú
+[*] --> Inicio
+
+Inicio --> VerMenú : El estudiante accede al menú del comedor
+VerMenú --> SeleccionarFecha : Filtra por fecha (opcional)
+SeleccionarFecha --> [*] : Fin de consulta
+@enduml

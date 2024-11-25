@@ -1,0 +1,14 @@
+@startuml
+title Actualizar Menú
+[*] --> Inicio
+
+Inicio --> SeleccionarMenú : El administrador accede a los menús
+SeleccionarMenú --> RellenarFormulario : Selecciona menú a editar
+RellenarFormulario --> ValidarDatos : Introduce modificaciones
+ValidarDatos --> Error : Datos inválidos
+Error --> RellenarFormulario : Corrige datos
+
+ValidarDatos --> GuardarCambios : Datos válidos
+GuardarCambios --> ConfirmarEdición : Menú actualizado exitosamente
+ConfirmarEdición --> [*]
+@enduml

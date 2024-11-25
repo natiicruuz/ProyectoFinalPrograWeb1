@@ -1,0 +1,36 @@
+@startuml DiagramaDeObjetos
+title Automatización de Guías Docentes
+
+object guia1
+object direccionCalidad1
+object tecnicoCalidad1
+object profesor1
+object directorDeGrado1
+object contenido1
+object titulacion1
+object asignatura1
+object plantillaMultititulacion1
+object version1
+
+guia1 -- direccionCalidad1
+guia1 -- tecnicoCalidad1
+guia1 -- titulacion1
+guia1 *-- contenido1
+guia1 -- plantillaMultititulacion1 : usa_plantilla
+guia1 *-- version1 : tiene_versiones
+
+direccionCalidad1 -- tecnicoCalidad1 : supervisa
+direccionCalidad1 -- profesor1 : audita
+direccionCalidad1 -- directorDeGrado1 : audita
+
+profesor1 o-- titulacion1
+directorDeGrado1 o-- titulacion1
+version1 -- titulacion1
+
+contenido1 <-- directorDeGrado1 : aprueba/rechaza
+contenido1 <-- profesor1 : edita
+
+contenido1 -- asignatura1 : pertenece_a
+asignatura1 o-- titulacion1 : forma_parte
+
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+title Eliminar Menú
+[*] --> Inicio
+
+Inicio --> SeleccionarMenú : El administrador accede a los menús
+SeleccionarMenú --> ConfirmarEliminación : Selecciona menú a eliminar
+ConfirmarEliminación --> [*] : Menú eliminado
+@enduml

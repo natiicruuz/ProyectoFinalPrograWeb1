@@ -1,0 +1,13 @@
+@startuml
+title Registrar una cuenta de estudiante
+[*] --> Inicio
+
+Inicio --> RellenarFormulario : El estudiante accede al registro
+RellenarFormulario --> ValidarDatos : Envía datos
+ValidarDatos --> Error : Datos inválidos
+Error --> RellenarFormulario : Corrige datos
+
+ValidarDatos --> CrearCuenta : Datos válidos
+CrearCuenta --> ConfirmarRegistro : Cuenta creada
+ConfirmarRegistro --> [*] : Registro exitoso
+@enduml

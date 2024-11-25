@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+
+actor Estudiante
+Estudiante --> (Registrar cuenta)
+Estudiante --> (Login)
+Estudiante --> (Actualizar perfil)
+Estudiante --> (Hacer reserva)
+Estudiante --> (Cancelar reserva)
+Estudiante --> (Consultar reservas)
+Estudiante --> (Consultar menú)
+
+
+Administrador --> (Eliminar estudiante)
+Administrador --> (Crear menú)
+Administrador --> (Actualizar menú)
+Administrador --> (Eliminar menú)
+
+@enduml

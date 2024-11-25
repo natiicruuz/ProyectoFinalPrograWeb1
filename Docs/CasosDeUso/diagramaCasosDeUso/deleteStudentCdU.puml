@@ -1,0 +1,10 @@
+@startuml
+title Eliminar Estudiante
+
+[*] --> Inicio
+
+Inicio --> ConfirmarAcción : El administrador accede a la gestión de estudiantes
+ConfirmarAcción --> SeleccionarEstudiante : Selecciona estudiante a eliminar
+SeleccionarEstudiante --> ConfirmarEliminación : Confirma eliminación
+ConfirmarEliminación --> [*] : Estudiante eliminado
+@enduml

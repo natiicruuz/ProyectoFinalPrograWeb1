@@ -1,0 +1,44 @@
+@startuml
+title Sistema de comedor universitario
+class Comedor {
+    - id: ObjectId
+    - nombre: String
+    - ubicacion: String
+    - capacidad: int
+    - horarios: String
+}
+
+class Estudiante {
+    - id: ObjectId
+    - nombre: String
+    - correo: String
+    - contraseña: String
+    - matricula: String
+}
+
+class Menú {
+    - id: ObjectId
+    - fecha: Date
+    - descripcion: String
+    - precio: double
+}
+
+class Reserva {
+    - id: ObjectId
+    - estado: String
+}
+
+class Plato {
+    - nombre: String
+}
+
+Estudiante -up- Reserva : hace
+
+Reserva .up.> Menú : usa
+
+Comedor  o-down- Menú : contiene
+
+Menú *-down-  Plato : compuesto_por
+
+Estudiante .up.> Comedor: usa el
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+title Consultar reservas del estudiante
+[*] --> Inicio
+
+Inicio --> VerReservas : El estudiante accede a la lista de reservas
+VerReservas --> SeleccionarReserva : Selecciona una reserva
+SeleccionarReserva --> VerDetalles : Consulta detalles
+VerDetalles --> [*] : Fin de consulta
+@enduml

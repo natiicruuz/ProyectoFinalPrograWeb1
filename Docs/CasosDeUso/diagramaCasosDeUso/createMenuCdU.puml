@@ -1,0 +1,13 @@
+@startuml
+title crear menu
+[*] --> Inicio
+
+Inicio --> RellenarFormulario
+RellenarFormulario --> ValidarDatos : Introduce datos del menú
+ValidarDatos --> Error : Datos inválidos
+Error --> RellenarFormulario : Corrige datos
+
+ValidarDatos --> GuardarMenú : Datos válidos
+GuardarMenú --> ConfirmarCreación : Menú creado exitosamente
+ConfirmarCreación --> [*]
+@enduml

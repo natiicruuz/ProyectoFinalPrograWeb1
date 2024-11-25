@@ -1,0 +1,12 @@
+@startuml
+title Hacer una reserva
+[*] --> Inicio
+
+Inicio --> SeleccionarMenú : El estudiante accede a los menús
+SeleccionarMenú --> ValidarDisponibilidad : Escoge menú
+ValidarDisponibilidad --> Error : Menú no disponible
+Error --> SeleccionarMenú : Escoge otro menú
+
+ValidarDisponibilidad --> ConfirmarReserva : Menú disponible
+ConfirmarReserva --> [*] : Reserva confirmada
+@enduml

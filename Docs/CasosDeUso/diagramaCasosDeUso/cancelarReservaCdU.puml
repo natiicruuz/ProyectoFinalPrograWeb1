@@ -1,0 +1,8 @@
+@startuml
+title Cancelar una reserva
+[*] --> Inicio
+
+Inicio --> SeleccionarReserva : El estudiante accede a las reservas
+SeleccionarReserva --> ConfirmarCancelación : Selecciona reserva
+ConfirmarCancelación --> [*] : Reserva cancelada
+@enduml
