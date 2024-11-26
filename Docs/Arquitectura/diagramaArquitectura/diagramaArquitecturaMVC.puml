@@ -1,0 +1,96 @@
+@startuml
+package src {
+    
+    package models {
+        class StudentModel {
+            - id: ObjectId
+            - nombre: String
+            - correo: String
+            - contraseña: String
+            - matricula: String
+        }
+        
+        class MenuModel {
+            - id: ObjectId
+            - fecha: Date
+            - descripcion: String
+            - precio: Double
+        }
+        
+        class ReservationModel {
+            - id: ObjectId
+            - estado: String
+        }
+    }
+    
+    package controllers {
+        class StudentController {
+            + createStudent()
+            + updateStudent()
+            + deleteStudent()
+            + login()
+        }
+        
+        class MenuController {
+            + createMenu()
+            + updateMenu()
+            + deleteMenu()
+            + getMenu()
+        }
+        
+        class ReservationController {
+            + createReservation()
+            + cancelReservation()
+            + getReservations()
+        }
+    }
+    
+    package routes {
+        class StudentRoutes {
+            + registerRoutes(app: Express)
+        }
+        
+        class MenuRoutes {
+            + registerRoutes(app: Express)
+        }
+        
+        class ReservationRoutes {
+            + registerRoutes(app: Express)
+        }
+    }
+    
+    package views {
+        class LoginPage
+        class Dashboard
+    }
+
+    package middleware {
+        class Auth {
+            + verifyToken(req, res, next)
+        }
+    }
+
+    package config {
+        class DatabaseConfig
+        class AppConfig
+    }
+}
+
+StudentRoutes --> StudentController
+MenuRoutes --> MenuController
+ReservationRoutes --> ReservationController
+
+StudentController --> StudentModel
+MenuController --> MenuModel
+ReservationController --> ReservationModel
+
+LoginPage ..> StudentRoutes : uses
+Dashboard ..> ReservationRoutes : uses
+Dashboard ..> MenuRoutes : uses
+
+Auth --> StudentRoutes
+Auth --> MenuRoutes
+Auth --> ReservationRoutes
+
+DatabaseConfig ..> models : initializes
+@enduml
