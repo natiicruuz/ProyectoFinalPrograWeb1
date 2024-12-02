@@ -1,4 +1,6 @@
 const express = require('express');
+const authenticateStudent = require('../middleware/Auth');
+
 const {
     createReservation,
     getAllReservations,
@@ -9,7 +11,7 @@ const {
 
 const router = express.Router();
 
-router.post('/create', createReservation);
+router.post('/create', authenticateStudent, createReservation);
 router.get('/getAll', getAllReservations);
 router.get('/get/:id', getReservationById);
 router.put('/update/:id', updateReservation);

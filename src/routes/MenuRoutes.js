@@ -1,4 +1,6 @@
 const express = require('express');
+const authenticateStudent = require('../middleware/Auth');
+
 const { createMenu, updateMenu, deleteMenu, getAllMenus, getMenuById } = require('../Controllers/MenuController');
 
 const router = express.Router();

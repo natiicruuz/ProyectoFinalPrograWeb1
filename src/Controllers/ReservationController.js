@@ -5,25 +5,30 @@ const Menu = require('../Models/MenuModel');
 
 exports.createReservation = async (req, res) => {
     try {
+        console.log("[starting...][ReservationController][createReservation]");
+
         const { studentId, menuId, date, status } = req.body;
 
-        // Verificar que el estudiante existe
-        const student = await Student.findById(studentId);
-        if (!student) {
-            return res.status(404).json({ message: 'Estudiante no encontrado' });
+        // Asegurarse de que el middleware haya añadido el studentId
+        if (!studentId) {
+            return res.status(401).json({ message: 'No autorizado' });
         }
 
-        // Verificar que el menú existe
-        const menu = await Menu.findById(menuId);
-        if (!menu) {
-            return res.status(404).json({ message: 'Menú no encontrado' });
-        }
+        // Crear la nueva reserva
+        const newReservation = new Reservation({
+            student: studentId,
+            menu: menuId,
+            date,
+            status: status || 'pending' // Estado por defecto 'pending'
+        });
 
-        // Crear la reserva
-        const reservation = new Reservation({ student: studentId, menu: menuId, date, status });
-        await reservation.save();
+        const savedReservation = await newReservation.save();
 
-        res.status(201).json({ message: 'Reserva creada exitosamente', data: reservation });
+        console.log("[end][ReservationController][createReservation]");
+        res.status(201).json({
+            message: 'Reserva creada exitosamente',
+            data: savedReservation
+        });
     } catch (error) {
         console.error('[createReservation] Error:', error.message);
         res.status(500).json({ message: 'Error interno del servidor' });
@@ -32,11 +37,13 @@ exports.createReservation = async (req, res) => {
 
 exports.getAllReservations = async (req, res) => {
     try {
+        console.log("[Starting...][ReservationController][getAllReservations]");
+
         // Obtener todas las reservas con los datos del estudiante y el menú
         const reservations = await Reservation.find()
             .populate('student', 'name email') // Solo obtenemos el nombre y el correo del estudiante
             .populate('menu', 'name price');  // Solo obtenemos el nombre y el precio del menú
-
+            console.log("[End][ReservationController][getAllReservations]");
         res.status(200).json({ message: 'Reservas obtenidas exitosamente', data: reservations });
     } catch (error) {
         console.error('[getAllReservations] Error:', error.message);
@@ -46,6 +53,8 @@ exports.getAllReservations = async (req, res) => {
 
 exports.getReservationById = async (req, res) => {
     try {
+        console.log("[Starting...][ReservationController][getReservationById]");
+
         const { id } = req.params;
 
         // Buscar la reserva por ID
@@ -56,6 +65,7 @@ exports.getReservationById = async (req, res) => {
         if (!reservation) {
             return res.status(404).json({ message: 'Reserva no encontrada' });
         }
+        console.log("[End][ReservationController][getReservationById]");
 
         res.status(200).json({ message: 'Reserva obtenida exitosamente', data: reservation });
     } catch (error) {

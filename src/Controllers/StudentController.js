@@ -10,7 +10,7 @@ exports.registerStudents = async (req, res) => {
         const { name, email, password, enrollment } = req.body;
 
         // Verificar si el estudiante ya existe por email o matrícula
-        const existingStudent = await Students.findOne({ $or: [{ email }, { enrollment }] });
+        const existingStudent = await Students.findOne({ $or: [{ email }] });
         if (existingStudent) {
             return res.status(409).json({ message: 'El estudiante ya está registrado' });
         }
@@ -122,40 +122,31 @@ exports.getAllStudents = async (req, res) => {
 }
 
 exports.loginStudents = async (req, res) => {
+    const { email, password } = req.body;
+
     try {
-        console.log("[starting...][StudentController][loginStudents]");
-
-        const { email, password } = req.body;
-
-        // Buscar el estudiante por email
         const student = await Students.findOne({ email });
-        if (!student) {
-            console.log("[error][StudentController][loginStudents] Estudiante no encontrado");
-            return res.status(401).json({ error: 'Credenciales inválidas' });
-        }
+        if (!student) return res.status(404).json({ error: 'Estudiante no encontrado' });
 
         // Verificar la contraseña
         const isPasswordValid = await bcrypt.compare(password, student.password);
-        if (!isPasswordValid) {
-            console.log("[error][StudentController][loginStudents] Contraseña incorrecta");
-            return res.status(401).json({ error: 'Credenciales inválidas' });
-        }
+        if (!isPasswordValid) return res.status(401).json({ error: 'Credenciales incorrectas' });
 
-        // Generar un token JWT
+        // Generar el token
         const token = jwt.sign(
-            { id: student._id, email: student.email },
-            JWT_SECRET,
+            { studentId: student._id, email: student.email }, 
+            process.env.JWT_SECRET, 
             { expiresIn: '1h' }
         );
 
-        console.log("[end][StudentController][loginStudents]");
-        res.status(200).json({
-            message: 'Inicio de sesión exitoso',
-            token
+        // Responder con el token y el studentId
+        res.status(200).json({ 
+            message: 'Inicio de sesión exitoso', 
+            token,
+            studentId: student._id  // Aquí retornamos el ID del estudiante
         });
-
     } catch (error) {
-        console.error("[error][StudentController][loginStudents]", error);
-        res.status(500).json({ message: "Error en el inicio de sesión", error: error.message });
+        console.error('[login] Error:', error.message);
+        res.status(500).json({ error: 'Error interno del servidor' });
     }
-}
+};

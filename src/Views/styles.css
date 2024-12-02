@@ -1,0 +1,154 @@
+/* General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #1b5e20, #81c784); /* Tonos verdes */
+}
+
+/* Container */
+.container {
+    background: #fff;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+}
+
+/* Headings */
+h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #1b5e20; /* Verde oscuro */
+}
+
+/* Forms */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="email"],
+input[type="name"],
+input[type="enrollment"],
+input[type="password"],
+input[type="text"] {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #1b5e20; /* Verde oscuro */
+}
+
+/* Buttons */
+button[type="submit"] {
+    padding: 15px;
+    background: #1b5e20; /* Verde oscuro */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+    background: #4caf50; /* Verde intermedio */
+}
+
+/* Dashboard Buttons */
+button.action {
+    padding: 10px;
+    background: #66bb6a; /* Verde claro */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px 0;
+    transition: background 0.3s;
+}
+
+button.action:hover {
+    background: #81c784; /* Verde más claro */
+}
+
+/* Hide class */
+.hide {
+    display: none;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+/* Table Header */
+thead th {
+    background-color: #66bb6a; /* Azul claro */
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Table Rows */
+tbody tr {
+    background-color: #f9f9f9; /* Gris claro */
+    transition: background-color 0.2s;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1; /* Color al pasar el mouse */
+}
+
+/* Buttons in Table */
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button.edit {
+    background-color: #FFC107; /* Amarillo */
+    color: #fff;
+}
+
+button.edit:hover {
+    background-color: #e0a800;
+}
+
+button.delete {
+    background-color: #DC3545; /* Rojo */
+    color: #fff;
+}
+
+button.delete:hover {
+    background-color: #c82333;
+}

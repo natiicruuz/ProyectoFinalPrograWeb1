@@ -82,7 +82,6 @@ exports.getAllMenus = async (req, res) => {
 
         // Buscar todos los menús
         const menus = await Menu.find();
-
         console.log("[end][MenuController][getAllMenus]");
         res.status(200).json({ message: 'Menús obtenidos exitosamente', data: menus });
     } catch (error) {
