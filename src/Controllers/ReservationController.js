@@ -51,6 +51,23 @@ exports.getAllReservations = async (req, res) => {
     }
 };
 
+exports.getStudentReservations = async (req, res) => {
+    try {
+        console.log("[Starting...][ReservationController][getStudentReservations]");
+
+        const studentId = req.params.studentId;
+        const reservations = await Reservation.find({ student: studentId })
+            .populate('student', 'name email') // Solo obtenemos el nombre y el correo del estudiante
+            .populate('menu', 'name price');  // Solo obtenemos el nombre y el precio del menú
+        console.log("[End][ReservationController][getStudentReservations]");
+
+        res.status(200).json({ message: 'Reservas del estudiante obtenidas exitosamente', data: reservations });
+    }catch (error) {
+        console.error('[getStudentReservations] Error:', error.message);
+        res.status(500).json({ message: 'Error interno del servidor' });
+    }
+
+}
 exports.getReservationById = async (req, res) => {
     try {
         console.log("[Starting...][ReservationController][getReservationById]");

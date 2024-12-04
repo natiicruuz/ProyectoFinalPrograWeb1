@@ -11,7 +11,6 @@ const authenticateStudent = (req, res, next) => {
         // Verificar y decodificar el token
         const decoded = jwt.verify(token, JWT_SECRET);
         req.studentId = decoded.id; // Añadir el ID del estudiante al objeto req
-        console.log('req.studentId', req.studentId)
         next();
     } catch (error) {
         console.error('[authenticateStudent] Error:', error.message);

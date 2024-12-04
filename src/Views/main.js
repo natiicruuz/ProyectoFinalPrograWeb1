@@ -98,7 +98,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Cargar reservas desde la base de datos
     async function loadReservations() {
         try {
-            const response = await fetch("/api/reservation/getAll", { headers });
+            const studentId = localStorage.getItem('studentId'); // Obtener el studentId desde localStorage
+            const response = await fetch(`/api/reservation/getStudentReservations/${studentId}`, { headers });
             const result = await response.json(); // Obtener el objeto completo
             const reservations = result.data; // Acceder al array de reservas
     
