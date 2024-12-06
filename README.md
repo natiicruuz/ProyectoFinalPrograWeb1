@@ -33,12 +33,13 @@ El diagrama a continuación muestra la estructura del proyecto y sus componentes
 ## Estructura del Proyecto
 ```
 src/
+├── app.js                 # Donde se juntan las configuraciones de backend y frontend
 ├── config/                # Configuración de la base de datos
 ├── controllers/           # Lógica de los controladores
 ├── models/                # Modelos de base de datos (Usuario, Menú, Reserva)
 ├── routes/                # Rutas de la API
 ├── views/                 # Archivos HTML (loginPage.html, dashboard.html)
-└── main.js                # Lógica principal de frontend (registro, login, reservas)
+      └── main.js                # Lógica principal de frontend (registro, login, reservas)
 ```
 ## **Tecnologías Utilizadas**
 - **Backend**: 
@@ -63,7 +64,7 @@ src/
 
 ### **Gestión de Reservas**
 - Los estudiantes pueden **crear**, **ver**, **editar** y **eliminar** reservas para el menú del día.
-- Las reservas están relacionadas con los menús y se muestran en una tabla con la opción de filtrar por fecha o tipo de menú.
+- Las reservas están relacionadas con los menús y se muestran en una tabla filtradas por el ID del estudiante.
 
 ### **Base de Datos**
 - **Colección de usuarios**: Almacena los detalles de cada estudiante.
