@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.setItem("token", result.token); // Guardar el token
                     localStorage.setItem("studentId", result.studentId); // Guardar el studentId
                     alert("Inicio de sesión exitoso");
-                    window.location.href = "dashboard.html"; // Redirigir al dashboard
+                    window.location.href = "lobby.html"; // Redirigir al dashboard
                 } else {
                     alert(result.error || "Error al iniciar sesión");
                 }
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
     
-    //  Crear una nueva reserva
+    // Crear una nueva reserva
     document.getElementById('reservationForm').addEventListener('submit', async function (event) {
         event.preventDefault(); // Evita el comportamiento predeterminado del formulario
         
@@ -156,17 +156,23 @@ document.addEventListener("DOMContentLoaded", async () => {
         const studentId = localStorage.getItem('studentId'); // Obtener el studentId desde localStorage
         const menuId = document.getElementById('menu').value;
         const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value; // Captura la hora seleccionada
         const status = document.getElementById('status').value;
+
+        // Combina date y time en un formato válido
+        const combinedDateTime = `${date}T${time}:00Z`; // Esto conserva la fecha en UTC
 
         try {
             // Construye el body para la API
             const reservationData = {
                 studentId,
                 menuId,
-                date,
+                date: combinedDateTime, // Convierte a formato ISO
                 status,
             };
 
+            console.log('combinedDateTime', combinedDateTime)
+            console.log('reservationData', reservationData);
             // Llama al API para crear la reserva
             const token = localStorage.getItem('token');
             const response = await fetch('/api/reservation/create', {
@@ -193,6 +199,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             alert('An error occurred. Please try again.');
         }
     });
+
 
     // Editar una reserva
     async function editReservation(id) {

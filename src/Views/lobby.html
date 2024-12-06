@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lobby - Sistema de Comedor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Lobby - Sistema de Reservas y Menús</h2>
+        <button id="logout">Cerrar Sesión</button>
+        <hr>
+        <h3>Navegación</h3>
+        <nav>
+            <ul>
+                <li><a href="dashboardReservations.html">Reservas</a></li>
+                <li><a href="dashboardMenus.html">Menús</a></li>
+            </ul>
+        </nav>
+    </div>
+    <script>
+        document.getElementById("logout").addEventListener("click", () => {
+            localStorage.removeItem("token");
+            alert("Sesión cerrada.");
+            window.location.href = "loginPage.html";
+        });
+    </script>
+</body>
+</html>
