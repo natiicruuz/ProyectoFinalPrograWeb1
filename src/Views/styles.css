@@ -27,6 +27,49 @@ body {
     animation: fadeIn 0.5s ease-in-out;
 }
 
+
+/* Contenedor específico para las reservas */
+.reservationsContainer {
+    background: #fff;
+    padding: 40px 20px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+    width: 100%; /* Ocupa todo el ancho disponible */
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+    /* No hay max-width aquí, se adapta al contenedor del layout */
+}
+
+/* Contenedor para las reservas y el formulario */
+.dashboard-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Espacio entre los dos contenedores */
+    margin-top: 30px; /* Para que no quede pegado a los elementos anteriores */
+}
+
+/* Ajustar el ancho de cada sección (reservas y formulario) */
+.reservations-section, .reservation-form {
+    flex: 1; /* Ambos divs ocuparán el mismo espacio */
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+/* Estilo específico para el formulario */
+.reservation-form {
+    background-color: #e9f7e3; /* Fondo más claro */
+}
+
+
+/* Mejorar el espaciado dentro de los formularios y tablas */
+input[type="date"],
+input[type="time"],
+select {
+    padding: 12px;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -48,6 +91,7 @@ h2 {
 
 h3 {
     color: #388e3c;
+    margin-top: 0;
     margin-bottom: 15px;
     font-size: 22px;
     font-weight: 600;

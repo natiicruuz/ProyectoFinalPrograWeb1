@@ -7,54 +7,58 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <div class="reservationsContainer">
         <h2>Bienvenido al Dashboard</h2>
         <hr>
 
-        <h3>Tus Reservas</h3>
-        <!-- Tabla para mostrar las reservas -->
-        <table id="reservationsTable">
-            <thead>
-                <tr>
-                    <th>Fecha</th>
-                    <th>Hora</th>
-                    <th>Menú</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Las reservas se llenarán dinámicamente aquí -->
-            </tbody>
-        </table>
+        <div class="dashboard-content">
+            <!-- Contenedor para las reservas y el formulario -->
+            <div class="reservations-section">
+                <h3>Tus Reservas</h3>
+                <!-- Tabla para mostrar las reservas -->
+                <table id="reservationsTable">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Menú</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Las reservas se llenarán dinámicamente aquí -->
+                    </tbody>
+                </table>
+            </div>
 
-        <h3>Crear una Nueva Reserva</h3>
-        <form id="reservationForm">
-            <!-- Campo oculto para el studentId -->
-            <input type="hidden" id="studentId" name="studentId" />
-          
-            <label for="menuId">Select Menu:</label>
-            <select id="menu" required>
-                <!-- Los menús se cargarán dinámicamente -->
-            </select>
-          
-            <label for="date">Date:</label>
-            <input type="date" id="date" name="date" required />
-          
-            <label for="time">Time:</label>
-            <input type="time" id="time" name="time" required />
-            <label for="status">Status:</label>
-            
-            <select id="status" name="status" required>
-              <option value="pending">Pending</option>
-              <option value="confirmed">Confirmed</option>
-            </select>
-            <button type="submit">Create Reservation</button>
-          </form>
-
-          <button id="logout">Cerrar Sesión</button>
-
-          
-          
+            <div class="reservation-form">
+                <h3>Crear una Nueva Reserva</h3>
+                <form id="reservationForm">
+                    <!-- Campo oculto para el studentId -->
+                    <input type="hidden" id="studentId" name="studentId" />
+                    
+                    <label for="menuId">Select Menu:</label>
+                    <select id="menu" required>
+                        <!-- Los menús se cargarán dinámicamente -->
+                    </select>
+                    
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date" required />
+                    
+                    <label for="time">Time:</label>
+                    <input type="time" id="time" name="time" required />
+                    
+                    <label for="status">Status:</label>
+                    <select id="status" name="status" required>
+                        <option value="pending">Pending</option>
+                        <option value="confirmed">Confirmed</option>
+                    </select>
+                    
+                    <button type="submit">Create Reservation</button>
+                </form>
+            </div>
+        </div>
+        <button onclick="window.location.href='lobby.html'">Volver al Lobby</button>
     </div>
     <script src="main.js"></script>
 </body>

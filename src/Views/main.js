@@ -246,13 +246,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    // Logout
-    document.getElementById("logout").addEventListener("click", () => {
-        localStorage.removeItem("token");
-        alert("Sesión cerrada.");
-        window.location.href = "loginPage.html";
-    });
-
     // Cargar los datos iniciales
     await loadMenus();
     await loadReservations();
