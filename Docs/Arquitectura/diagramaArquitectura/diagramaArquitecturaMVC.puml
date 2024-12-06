@@ -1,6 +1,6 @@
 @startuml
 package src {
-    
+
     package models {
         class StudentModel {
             - id: ObjectId
@@ -36,6 +36,7 @@ package src {
             + updateMenu()
             + deleteMenu()
             + getMenu()
+            + getAllMenus()
         }
         
         class ReservationController {
@@ -61,7 +62,9 @@ package src {
     
     package views {
         class LoginPage
-        class Dashboard
+        class Lobby
+        class DashboardMenus
+        class DashboardReservations
     }
 
     package middleware {
@@ -72,7 +75,6 @@ package src {
 
     package config {
         class DatabaseConfig
-        class AppConfig
     }
 }
 
@@ -85,8 +87,9 @@ MenuController --> MenuModel
 ReservationController --> ReservationModel
 
 LoginPage ..> StudentRoutes : uses
-Dashboard ..> ReservationRoutes : uses
-Dashboard ..> MenuRoutes : uses
+Lobby ..> ReservationRoutes : uses
+DashboardMenus ..> MenuRoutes : uses
+DashboardReservations ..> ReservationRoutes : uses
 
 Auth --> StudentRoutes
 Auth --> MenuRoutes
