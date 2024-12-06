@@ -29,7 +29,7 @@ body {
 
 
 /* Contenedor específico para las reservas */
-.reservationsContainer {
+.reservationsAndMenuContainer {
     background: #fff;
     padding: 40px 20px;
     border-radius: 12px;
@@ -37,7 +37,6 @@ body {
     width: 100%; /* Ocupa todo el ancho disponible */
     text-align: center;
     animation: fadeIn 0.5s ease-in-out;
-    /* No hay max-width aquí, se adapta al contenedor del layout */
 }
 
 /* Contenedor para las reservas y el formulario */
@@ -49,7 +48,7 @@ body {
 }
 
 /* Ajustar el ancho de cada sección (reservas y formulario) */
-.reservations-section, .reservation-form {
+.reservations-section, .create-form {
     flex: 1; /* Ambos divs ocuparán el mismo espacio */
     padding: 20px;
     border-radius: 8px;
@@ -58,7 +57,7 @@ body {
 }
 
 /* Estilo específico para el formulario */
-.reservation-form {
+.create-form {
     background-color: #e9f7e3; /* Fondo más claro */
 }
 

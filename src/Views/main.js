@@ -171,8 +171,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 status,
             };
 
-            console.log('combinedDateTime', combinedDateTime)
-            console.log('reservationData', reservationData);
             // Llama al API para crear la reserva
             const token = localStorage.getItem('token');
             const response = await fetch('/api/reservation/create', {
@@ -189,6 +187,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const data = await response.json();
                 console.log('Reservation created successfully:', data);
                 alert('Reservation created successfully!');
+                loadReservations();
             } else {
                 const error = await response.json();
                 console.error('Error creating reservation:', error);
