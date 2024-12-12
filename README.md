@@ -15,7 +15,7 @@ El sistema cumple con los siguientes requisitos:
 ### **Página Principal de Gestión:**
 - **Formulario para crear reservas**: Los usuarios pueden realizar nuevas reservas para el menú diario.
 - **Listado de reservas existentes**: Se muestra un listado de todas las reservas del usuario.
-- **Filtrado y búsqueda de elementos**: El usuario puede filtrar las reservas por fecha o menú.
+- **Filtrado y búsqueda de elementos**: El sistema puede filtrar las reservas por el estudiante.
 
 ### **Base de Datos:**
 - **Colección de usuarios**: Almacena la información de los estudiantes.
